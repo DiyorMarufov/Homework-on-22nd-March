@@ -1,0 +1,16 @@
+body{
+    place-items: center;
+    margin-top: 70px;
+}
+
+.main-container{
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+    font-size: 30px;
+    border: 6px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+    min-height: 700px;
+    overflow-wrap: break-word; 
+    word-wrap: break-word;
+}

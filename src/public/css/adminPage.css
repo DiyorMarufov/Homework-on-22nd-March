@@ -1,0 +1,68 @@
+body{
+    place-items: center;
+    margin-top: 70px;
+}
+
+.head-content{
+    display: flex;
+}
+
+.main-content {
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+    font-size: 30px;
+    border: 6px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+    min-height: 700px;
+    
+    
+}
+
+.H1 {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0%;
+    margin: 0%;
+    margin-bottom: 40px ;
+    margin-left: 40px;
+}
+
+.titleDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+li{
+    margin: -50px 0;
+    
+}
+
+.titleUl{
+    list-style: none;
+}
+
+.editBtn{
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.editBtn, .deleteBtn, .addBtn{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.addBtn{
+    margin-left: auto;
+    margin-bottom: 30px;
+    margin-right: 7px;
+}
+
+
+
+
