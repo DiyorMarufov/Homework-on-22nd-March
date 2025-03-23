@@ -30,14 +30,18 @@ body{
     margin: 6px;
     border: 5px solid black;
     border-radius: 5px;
+    font-size: 22px;
+
 }
 
 #content{
     width: 580px;
-    height: 290px;
+    height: 340px;
     margin-left: 6px;
     border: 5px solid black;
     border-radius: 5px;
+    font-size: 22px;
+
 
 }
 

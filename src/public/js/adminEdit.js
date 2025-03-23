@@ -3,10 +3,13 @@ const dateElement = document.querySelector("#date");
 const contentElement = document.querySelector("#content");
 const updateBtn = document.querySelector(".main-form");
 
-const urlParams = new URLSearchParams(window.location.search);
-const articleId = urlParams.get("id"); 
+const articleId = localStorage.getItem("lastEditedArticle")
 
-if (!articleId) alert("ID topilmadi!");
+if(!articleId){
+    alert(`${articleId} not found`)
+    window.location.href = "/admin"
+} 
+
 
 async function loadArticle() {
     try {
@@ -28,22 +31,24 @@ updateBtn.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     try {
+        
         const updatedArticle = {
             title: titleElement.value,
             publishedDate: dateElement.value,
             content: contentElement.value
         };
 
+
         const response = await fetch(`http://localhost:2000/blog/${articleId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedArticle)
         });
+        
 
         if (!response.ok) throw new Error("Maqolani yangilashda xatolik!");
 
-        alert("Maqola muvaffaqiyatli yangilandi!");
-        window.location.href = "/admin"; 
+        window.location.href = "/blog/admin"; 
     } catch (error) {
         alert(error.message);
     }

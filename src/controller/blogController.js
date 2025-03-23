@@ -32,13 +32,13 @@ export const blogController = {
             
             const {id} =  req.params
             const blogs =  await readBlog()
-            const blog = blogs.find(element => element.id === id)
+            const blog = blogs.find(element => element.id === +id)
             
             if(!blog){
                throw new Error('Blog not found')
             }
 
-            res.status(200).json({data:blogs})
+            res.status(200).json({data:blog})
 
         } catch (error) {
             next(error)
@@ -115,20 +115,24 @@ export const blogController = {
 
     update: async (req, res, next) => {
         try {
-            const { title, content, publishedDate } = req.body;
+            const data = req.body;
             const { id } = req.params;
     
             let blogs = await readBlog(); 
-            let blogIndex = blogs.findIndex(blog => blog.id == Number(id));
+            let blogIndex = blogs.findIndex(blog => blog.id === +id);
     
             if (blogIndex === -1) {
                 return res.status(404).json({ message: "Maqola topilmadi!" });
             }
     
-            blogs[blogIndex] = { id: Number(id), title, content, publishedDate };
+            const newArticle = {
+                ...blogs[blogIndex],
+                ...data
+            }
+            
+            blogs.splice(blogIndex,1,newArticle)
             await writeBlog(blogs);
-    
-            res.status(200).json({data: blogs[blogIndex] });
+            res.status(200).json({data: newArticle })
         } catch (error) {
             next(error);
         }

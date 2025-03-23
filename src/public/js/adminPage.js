@@ -27,7 +27,8 @@ getData("http://localhost:2000/blog").then(data =>{
         deleteButton.textContent = "Delete"
         
         deleteButton.dataset.id = element.id 
-
+        editButton.dataset.id = element.id
+        
         div.appendChild(h4)
         div.appendChild(editButton)
         div.appendChild(deleteButton)
@@ -41,6 +42,8 @@ getData("http://localhost:2000/blog").then(data =>{
             
             e.preventDefault()
 
+            const articleId = e.currentTarget.dataset.id
+            localStorage.setItem("lastEditedArticle",articleId)
             window.location.href = "/blog/edit"
             
         })
